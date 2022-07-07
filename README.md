@@ -13,7 +13,7 @@ www.akchabar.kg и записать их в удобном виде в csv фа�
 
 <h4> 1. Клонирование репозитория:</h4>
 
-<p><span>git clone https://github.com/aycanmuratbekova/akchabar_parser.git</p>
+<p>git clone https://github.com/aycanmuratbekova/akchabar_parser.git</p>
 
 <h4> 2. Установка библиотек</h4>
 pip install -r requirements.txt<br/>
@@ -22,11 +22,12 @@ pip install -r requirements.txt<br/>
 <ul>pip install requests<br/>
 pip install beautifulsoup4<br/>
 pip install pandas<br/>
-pip install lxml<br/></ul>
+pip install lxml<br/>
+pip install IPython<br/></ul>
 <h4>branch:</h4>
 
 <ul>Рабочая ветка репозитория в branch называется dev
-</ul></p>
+</ul>
 
 <h3>Требования</h3>
 <li>необходимо использовать Python 3</li>
