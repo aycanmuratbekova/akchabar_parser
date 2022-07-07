@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
+from IPython.display import display
 
 
 url = 'https://www.akchabar.kg/ru/exchange-rates/'
@@ -36,4 +37,4 @@ mydata.to_csv(f'my_data_{last_dt}.csv', index=False)
 # Считываем данные с файла csv
 mydata2 = pd.read_csv(f'my_data_{last_dt}.csv')
 
-print(mydata2)
+display(mydata2.to_string())
