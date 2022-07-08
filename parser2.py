@@ -10,18 +10,22 @@ pages = requests.get(url)
 soup = BeautifulSoup(pages.text, 'lxml')
 table1 = soup.find('table', id='rates_table')
 
-# Шапка нашего датафрейма
-headers = ['Банк', 'Покупка USD', 'Продажа USD',
-           'Покупка EURO', 'Продажа EURO',
-           'Покупка RUB', 'Продажа RUB',
-           'Покупка KZT', 'Продажа KZT']
+heading = table1.find_all('span', class_='dib')
+heading = [item.text for item in heading]
+
+headers = []
+
+for i in heading:
+    headers.append(i)
+    headers.append(i)
+
+headers.insert(0, ' ')
 
 # Создание датафрейма
 mydata = pd.DataFrame(columns=headers)
 
 # Создаем цикл для заполнения mydata
-t_body = table1.find('tbody')
-for j in t_body.find_all('tr'):
+for j in table1.find_all('tr')[1:]:
     row_data = j.find_all('td')
     row = [i.text for i in row_data]
     length = len(mydata)
@@ -34,5 +38,4 @@ mydata.to_csv(f'my_data_{last_dt}.csv', index=False)
 # Считываем данные с файла csv
 mydata2 = pd.read_csv(f'my_data_{last_dt}.csv')
 
-display(mydata2.to_string())
-
+display(mydata2.to_string().replace('.1', ' '))
