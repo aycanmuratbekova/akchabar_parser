@@ -31,8 +31,8 @@ for j in table1.find_all('tr')[1:]:
     length = len(mydata)
     mydata.loc[length] = row
 
-# Импортирую в csv _%H_%M_%S'
-last_dt = datetime.now().strftime('%d_%m_%Y')
+# Импортирую в csv
+last_dt = datetime.now().strftime('%d_%m_%Y_%H_%M_%S')
 mydata.to_csv(f'my_data_{last_dt}.csv', index=False)
 
 # Считываем данные с файла csv
