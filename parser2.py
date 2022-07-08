@@ -19,22 +19,20 @@ headers = ['Банк', 'Покупка USD', 'Продажа USD',
 # Создание датафрейма
 mydata = pd.DataFrame(columns=headers)
 
-# Создаем цыкл для заполнения mydata
-for j in table1.find_all('tr')[1:]:
+# Создаем цикл для заполнения mydata
+t_body = table1.find('tbody')
+for j in t_body.find_all('tr'):
     row_data = j.find_all('td')
     row = [i.text for i in row_data]
     length = len(mydata)
     mydata.loc[length] = row
 
-# Удаляю первую запись с индексом 0 row
-mydata.drop(labels=[0], axis=0, inplace=True)
-
-
 # Импортирую в csv
-last_dt = datetime.now().strftime('%d_%m_%Y')
+last_dt = datetime.now().strftime('%d_%m_%Y_%H_%M_%S')
 mydata.to_csv(f'my_data_{last_dt}.csv', index=False)
 
 # Считываем данные с файла csv
 mydata2 = pd.read_csv(f'my_data_{last_dt}.csv')
 
 display(mydata2.to_string())
+
